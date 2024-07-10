@@ -30,11 +30,10 @@ public class AuthController {
 
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(jwtRequest.getUsername());
+
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok()
-                .header("Authorization", "Bearer " + token)
-                .body(new JwtResponse(token));
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
     private void authenticate(String username, String password) throws Exception {
