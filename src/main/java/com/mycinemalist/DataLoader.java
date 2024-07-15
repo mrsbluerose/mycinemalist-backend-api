@@ -7,6 +7,7 @@ import com.mycinemalist.repository.MovieListRepository;
 import com.mycinemalist.repository.MovieRepository;
 import com.mycinemalist.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -17,13 +18,15 @@ public class DataLoader implements CommandLineRunner {
     private final UserRepository userRepository;
     private final MovieRepository movieRepository;
     private final MovieListRepository movieListRepository;
+    private final PasswordEncoder passwordEncoder; // Add PasswordEncoder as a dependency
 
     private final String PASSWORD = "admin";
 
-    public DataLoader(UserRepository userRepository, MovieRepository movieRepository, MovieListRepository movieListRepository) {
+    public DataLoader(UserRepository userRepository, MovieRepository movieRepository, MovieListRepository movieListRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.movieRepository = movieRepository;
         this.movieListRepository = movieListRepository;
+        this.passwordEncoder = passwordEncoder; // Initialize PasswordEncoder
     }
 
     @Override
@@ -37,19 +40,19 @@ public class DataLoader implements CommandLineRunner {
         if (userRepository.count() == 0) {
             User user1 = new User();
             user1.setUsername("testuser1");
-            user1.setPassword(PASSWORD);
+            user1.setPassword(passwordEncoder.encode(PASSWORD)); // Encode password
             user1.setEmail("testuser1@example.com");
             user1.setFriends(Arrays.asList("testuser2", "testuser3"));
 
             User user2 = new User();
             user2.setUsername("testuser2");
-            user2.setPassword(PASSWORD);
+            user2.setPassword(passwordEncoder.encode(PASSWORD)); // Encode password
             user2.setEmail("testuser2@example.com");
             user2.setFriends(Arrays.asList("testuser1"));
 
             User user3 = new User();
             user3.setUsername("testuser3");
-            user3.setPassword(PASSWORD);
+            user3.setPassword(passwordEncoder.encode(PASSWORD)); // Encode password
             user3.setEmail("testuser3@example.com");
             user3.setFriends(Arrays.asList("testuser1"));
 
