@@ -24,8 +24,8 @@ public class MovieListServiceImpl implements MovieListService {
     }
 
     @Override
-    public List<MovieList> getAllMovieLists() {
-        return movieListRepository.findAll();
+    public List<MovieList> getAllMovieListsCreatedByUser(String id) {
+        return movieListRepository.findAllByCreatedByUserId(id);
     }
 
     @Override

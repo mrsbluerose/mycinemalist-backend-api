@@ -7,7 +7,10 @@ import java.util.List;
 public interface MovieListService {
     MovieList createMovieList(MovieList movieList);
     MovieList getMovieListById(String id);
-    List<MovieList> getAllMovieLists();
+    //List<MovieList> getAllMovieListsCreatedByUser();
+
+    List<MovieList> getAllMovieListsCreatedByUser(String id);
+
     MovieList updateMovieList(String id, MovieList movieList);
     void deleteMovieList(String id);
 

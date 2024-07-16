@@ -19,14 +19,14 @@ public class MovieListController {
         return movieListService.createMovieList(movieList);
     }
 
-    @GetMapping("/{id}")
-    public MovieList getMovieListById(@PathVariable String id) {
-        return movieListService.getMovieListById(id);
-    }
+//    @GetMapping("/{id}")
+//    public MovieList getMovieListById(@PathVariable String id) {
+//        return movieListService.getMovieListById(id);
+//    }
 
-    @GetMapping
-    public List<MovieList> getAllMovieLists() {
-        return movieListService.getAllMovieLists();
+    @GetMapping("/{userId}")
+    public List<MovieList> getAllMovieListsCreatedByUser(@PathVariable String userId) {
+        return movieListService.getAllMovieListsCreatedByUser(userId);
     }
 
     @PutMapping("/{id}")
