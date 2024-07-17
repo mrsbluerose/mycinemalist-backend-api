@@ -1,0 +1,3 @@
+The primary purpose of this app is to provide an easy-to-use interface for creating movie lists on the go. A user can search the movie database to find specific titles or attributes (genre, actor, etc.) and add them to lists they create, such as “to watch”, “best comedies”, “Christmas”, etc. The user can then manage those movies by sorting, filtering or removing them (checking them off the list).
+
+The secondary purpose of this app is to let the user collaborate with other users on lists. A user can add other users as friends and share lists, build lists and manage lists together. Examples of this include “Bad movie night”, “Must see horror”, “Mary’s go-to rom coms”, “Options for Friday night get together”.
