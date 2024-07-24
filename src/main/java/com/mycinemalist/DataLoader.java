@@ -39,22 +39,22 @@ public class DataLoader implements CommandLineRunner {
     private void loadTestUsers() {
         if (userRepository.count() == 0) {
             User user1 = new User();
-            user1.setUsername("testuser1");
+            user1.setDisplayName("testuser1");
             user1.setPassword(passwordEncoder.encode(PASSWORD)); // Encode password
             user1.setEmail("testuser1@example.com");
-            user1.setFriends(Arrays.asList("testuser2", "testuser3"));
+            user1.setFriends(Arrays.asList());
 
             User user2 = new User();
-            user2.setUsername("testuser2");
+            user2.setDisplayName("testuser2");
             user2.setPassword(passwordEncoder.encode(PASSWORD)); // Encode password
             user2.setEmail("testuser2@example.com");
-            user2.setFriends(Arrays.asList("testuser1"));
+            user2.setFriends(Arrays.asList());
 
             User user3 = new User();
-            user3.setUsername("testuser3");
+            user3.setDisplayName("testuser3");
             user3.setPassword(passwordEncoder.encode(PASSWORD)); // Encode password
             user3.setEmail("testuser3@example.com");
-            user3.setFriends(Arrays.asList("testuser1"));
+            user3.setFriends(Arrays.asList());
 
             userRepository.saveAll(Arrays.asList(user1, user2, user3));
         }

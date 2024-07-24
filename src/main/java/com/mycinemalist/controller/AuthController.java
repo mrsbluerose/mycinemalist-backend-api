@@ -1,5 +1,7 @@
 package com.mycinemalist.controller;
 
+import com.mycinemalist.entity.User;
+import com.mycinemalist.repository.UserRepository;
 import com.mycinemalist.security.JwtRequest;
 import com.mycinemalist.security.JwtResponse;
 import com.mycinemalist.security.JwtTokenUtil;
@@ -24,21 +26,29 @@ public class AuthController {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-        authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
+        authenticate(jwtRequest.getEmail(), jwtRequest.getPassword());
 
         final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(jwtRequest.getUsername());
+                .loadUserByUsername(jwtRequest.getEmail());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
+        // Fetch user to get the user ID
+        User user = userRepository.findByEmail(jwtRequest.getEmail());
+
+        return ResponseEntity.ok(new JwtResponse(token, user.getId().toHexString()));
+
     }
 
-    private void authenticate(String username, String password) throws Exception {
+
+    private void authenticate(String email, String password) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (Exception e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }

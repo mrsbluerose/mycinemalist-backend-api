@@ -2,9 +2,12 @@ package com.mycinemalist.service;
 
 import com.mycinemalist.entity.User;
 import com.mycinemalist.repository.UserRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,7 +25,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> findByUserId(String userId) {
+        ObjectId userObjectId = new ObjectId(userId);
+        return userRepository.findById(userObjectId);
     }
 }
