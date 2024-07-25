@@ -1,9 +1,12 @@
 package com.mycinemalist.controller;
 
-import com.mycinemalist.entity.Movie;
-import com.mycinemalist.service.MovieService;
+import com.mycinemalist.dto.MovieDTO;
+import com.mycinemalist.service.MovieDbService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -12,30 +15,11 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    private MovieService movieService;
+    private MovieDbService movieDbService;
 
-    @PostMapping
-    public Movie createMovie(@RequestBody Movie movie) {
-        return movieService.createMovie(movie);
-    }
-
-    @GetMapping("/{id}")
-    public Movie getMovieById(@PathVariable String id) {
-        return movieService.getMovieById(id);
-    }
-
-    @GetMapping
-    public List<Movie> getAllMovies() {
-        return movieService.getAllMovies();
-    }
-
-    @PutMapping("/{id}")
-    public Movie updateMovie(@PathVariable String id, @RequestBody Movie movie) {
-        return movieService.updateMovie(id, movie);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteMovie(@PathVariable String id) {
-        movieService.deleteMovie(id);
+    @GetMapping("/search")
+    public List<MovieDTO> searchMovies(@RequestParam String title) {
+        return movieDbService.searchMovies(title);
     }
 }
+
