@@ -1,7 +1,6 @@
 package com.mycinemalist.service;
 
-import com.mycinemalist.entity.Movie;
-import com.mycinemalist.repository.MovieRepository;
+import com.mycinemalist.dto.MovieDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,31 +10,10 @@ import java.util.List;
 public class MovieServiceImpl implements MovieService {
 
     @Autowired
-    private MovieRepository movieRepository;
+    private MovieDbService movieDbService;
 
     @Override
-    public Movie createMovie(Movie movie) {
-        return movieRepository.save(movie);
-    }
-
-    @Override
-    public Movie getMovieById(String id) {
-        return movieRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
-    }
-
-    @Override
-    public Movie updateMovie(String id, Movie movie) {
-        movie.setId(id);
-        return movieRepository.save(movie);
-    }
-
-    @Override
-    public void deleteMovie(String id) {
-        movieRepository.deleteById(id);
+    public List<MovieDTO> searchMovies(String title) {
+        return movieDbService.searchMovies(title);
     }
 }
