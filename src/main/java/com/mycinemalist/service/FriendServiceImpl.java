@@ -1,6 +1,6 @@
 package com.mycinemalist.service;
 
-import com.mycinemalist.DTO.UserDTO;
+import com.mycinemalist.dto.UserDTO;
 import com.mycinemalist.entity.User;
 import com.mycinemalist.repository.UserRepository;
 import org.bson.types.ObjectId;

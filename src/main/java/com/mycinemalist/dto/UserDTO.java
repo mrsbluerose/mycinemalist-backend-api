@@ -1,4 +1,4 @@
-package com.mycinemalist.DTO;
+package com.mycinemalist.dto;
 
 import lombok.Builder;
 import lombok.Data;
