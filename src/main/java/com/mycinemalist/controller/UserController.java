@@ -2,7 +2,6 @@ package com.mycinemalist.controller;
 
 import com.mycinemalist.entity.User;
 import com.mycinemalist.service.UserService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
