@@ -1,7 +1,6 @@
 package com.mycinemalist.controller;
 
-import com.mycinemalist.DTO.UserDTO;
-import com.mycinemalist.entity.User;
+import com.mycinemalist.dto.UserDTO;
 import com.mycinemalist.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

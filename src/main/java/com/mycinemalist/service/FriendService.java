@@ -1,8 +1,6 @@
 package com.mycinemalist.service;
 
-import com.mycinemalist.DTO.UserDTO;
-import com.mycinemalist.entity.User;
-import org.bson.types.ObjectId;
+import com.mycinemalist.dto.UserDTO;
 
 import java.util.List;
 import java.util.Optional;
