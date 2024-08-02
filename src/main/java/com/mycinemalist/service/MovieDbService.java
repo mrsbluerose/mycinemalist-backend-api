@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class MovieDbService {
 
-    @Value("${tmdb.api.key}")
+    @Value("${tmdb.api.token}")
     private String apiKey;
 
     private final RestTemplate restTemplate = new RestTemplate();
